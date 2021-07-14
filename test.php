@@ -1,11 +1,12 @@
 <?php
+
 function GetFraseNueva()
 {
 	$file = file('common_passwords.txt');
 	$wCount = count($file);
 
 	$arrayPalabras = array();
-
+	$stringReturn = "";
 	for ($i = 0; $i < 17;) {
 
 		$PalabraNueva = $file[rand(0, $wCount - 1)];
@@ -16,10 +17,11 @@ function GetFraseNueva()
 		} else {
 			$i++;
 			$arrayPalabras[$PalabraNueva] = true;
+			$stringReturn .= $PalabraNueva . " ";
 		}
 	}
 
-	return json_encode($arrayPalabras);
+	return rtrim($stringReturn);
 }
 
 
